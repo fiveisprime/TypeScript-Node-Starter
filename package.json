@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "start": "npm run serve",
-    "build": "npm run build-sass && npm run build-ts && npm run tslint && npm run copy-static-assets",
+    "build": "npm run build-sass && npm run build-ts && npm run copy-static-assets",
     "serve": "node dist/server.js",
     "watch-node": "nodemon dist/server.js",
     "watch": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-sass\" \"npm run watch-ts\" \"npm run watch-node\"",
@@ -24,7 +24,8 @@
     "copy-static-assets": "ts-node copyStaticAssets.ts",
     "debug": "npm run build && npm run watch-debug",
     "serve-debug": "nodemon --inspect dist/server.js",
-    "watch-debug": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-sass\" \"npm run watch-ts\" \"npm run serve-debug\""
+    "watch-debug": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-sass\" \"npm run watch-ts\" \"npm run serve-debug\"",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "async": "^2.6.0",
@@ -49,10 +50,10 @@
     "passport-local": "^1.0.0",
     "pug": "^2.0.0-rc.4",
     "request": "^2.83.0",
-    "request-promise": "^4.2.2",
-    "winston": "^2.4.0"
-  },
-  "devDependencies": {
+    "node-sass": "^4.7.2",
+    "ts-node": "^5.0.0",
+    "typescript": "^2.7.2",
+    "shelljs": "^0.8.1",
     "@types/async": "^2.0.45",
     "@types/bcrypt-nodejs": "^0.0.30",
     "@types/bluebird": "^3.5.20",
@@ -76,19 +77,16 @@
     "@types/passport-facebook": "^2.1.7",
     "@types/passport-local": "^1.0.32",
     "@types/request": "^2.47.0",
-    "@types/shelljs": "^0.7.8",
-    "@types/supertest": "^2.0.4",
-    "@types/winston": "^2.3.7",
+    "@types/shelljs": "^0.7.8"
+  },
+  "devDependencies": {
     "chai": "^4.1.2",
     "concurrently": "^3.5.1",
     "jest": "^22.0.4",
-    "node-sass": "^4.7.2",
     "nodemon": "^1.13.0",
-    "shelljs": "^0.8.1",
     "supertest": "^3.0.0",
     "ts-jest": "^22.0.4",
-    "ts-node": "^5.0.0",
     "tslint": "^5.9.1",
-    "typescript": "^2.7.2"
+    "@types/supertest": "^2.0.4"
   }
 }
